@@ -1,0 +1,26 @@
+<div class="body">
+  <div class="form">
+    <h1>Update employee: {{id}}</h1>
+    <form [formGroup]="form" (ngSubmit)="updateEmployee()">
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>New Position</mat-label>
+        <input type="text" matInput  autocomplete="off" formControlName="newPosition">
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>New salary</mat-label>
+        <input min="1160000" max="7000000"  placeholder="$1.160.000" type="number" matInput autocomplete="off"
+               formControlName="newSalary" >
+        <span class="validity"></span>
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Update date</mat-label>
+        <input type="date" matInput autocomplete="off" formControlName="modificationDay">
+      </mat-form-field>
+
+      <button type="submit" class="form-field button" mat-raised-button color="primary" [disabled]="form.invalid">Update
+      </button>
+    </form>
+  </div>
+</div>

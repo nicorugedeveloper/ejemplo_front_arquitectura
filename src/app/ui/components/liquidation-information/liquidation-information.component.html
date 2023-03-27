@@ -1,0 +1,78 @@
+<div class="container" id="component-to-download">
+  <br>
+  <br>
+  <br>
+  <h1>IAS Software</h1>
+
+  <hr>
+  <br>
+
+  <p>
+    Certifies that the employee <strong>{{liquidation?.employeeName}}</strong> with identification number
+    <strong>{{liquidation?.employeeId | currency:'':'':'1.0-0'  }}</strong>, who was linked to the company since
+    <strong>{{liquidation?.employeeContractStart}}</strong>,
+    ended his contract on <strong>{{liquidation?.employeeContractEnd}}</strong>, having worked a total
+    of <strong>{{liquidation?.totalDaysWorked | currency:'':'':'1.0-0'  }}</strong>,
+    being <strong>{{liquidation?.daysWorkedCurrentYear | currency:'':'':'1.0-0'}}</strong>
+    in the current year and
+    <strong>{{liquidation?.daysWorkedLastSixMonths | currency:'':'':'1.0-0'}}</strong>
+    in the last semester, with <strong>{{liquidation?.vacationDaysToBeTaken | currency:'':'':'1.0-0'}}</strong>
+    total accrued vacation days, and earning a salary
+    of <strong>{{liquidation?.lastSalary | currency:'':'symbol':'1.0-0'  }}</strong>
+  </p>
+  <p *ngIf="liquidation?.transportationAllowance != 0">
+    plus transportation allowance
+    <strong>{{liquidation?.transportationAllowance | currency:'':'symbol':'1.0-0'  }}</strong>
+  </p>
+  <p>, for a base salary of <strong>{{liquidation?.baseSettlementSalary | currency:'':'symbol':'1.0-0'}}</strong> in the
+    last year, the
+    following settlement information
+    is provided:
+  </p>
+  <br>
+  <br>
+  <br>
+
+  <p>
+    severance pay : <strong>{{liquidation?.severancePay | currency:'':'symbol':'1.0-0'  }}</strong>
+  </p>
+  <br>
+
+  <p>
+    severance interest : <strong>{{liquidation?.interestSeverancePay | currency:'':'symbol':'1.0-0'  }}</strong>
+  </p>
+  <br>
+
+  <p>
+    vacation pay: <strong>{{liquidation?.vacationPay | currency:'':'symbol':'1.0-0'  }}</strong>
+  </p>
+  <br>
+
+  <p>
+    service bonus: <strong>{{liquidation?.serviceBonus | currency:'':'symbol':'1.0-0'  }}</strong>
+  </p>
+  <br>
+
+  <p>
+    remaining salary: <strong>{{liquidation?.payrollPayable | currency:'':'symbol':'1.0-0'  }}</strong>
+  </p>
+  <br>
+
+  <p *ngIf="liquidation?.bonusUnjustifiedDismissal != 0">
+    bonus for unjustified dismissal:
+    <strong>{{liquidation?.bonusUnjustifiedDismissal | currency:'':'symbol':'1.0-0'  }}</strong>
+  </p>
+  <br>
+
+  <p>
+    for a total settled total of <strong>{{liquidation?.totalSettlement | currency:'':'symbol':'1.0-0'  }}</strong>
+  </p>
+
+
+</div>
+<div class="container-button">
+  <button (click)="downloadPDF()" mat-raised-button color="primary">
+    <mat-icon>download</mat-icon>
+    <span>Download</span>
+  </button>
+</div>

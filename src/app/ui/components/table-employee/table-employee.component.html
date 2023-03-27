@@ -1,0 +1,83 @@
+<h3 *ngIf="employee.length == 0">
+  No employees found, try to enter a new employee or modify the search range.
+</h3>
+<div class="cont">
+  <div class="filters">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Julian" #input autocomplete="off">
+    </mat-form-field>
+    <span class="example-spacer"></span>
+    <span class="paginationOf">Min salary: </span>
+    <input class="paginationOf input-range" type="number" [(ngModel)]="minSalary"
+           (blur)="onRecordsPageChange()" [min]="1160000" [max]="7000000" value="minSalary">
+    <span class="paginationOf">Max salary: </span>
+    <input class="paginationOf input-range" type="number" [(ngModel)]="maxSalary"
+           (blur)="onRecordsPageChange()" [min]="1160000" [max]="7000000" value="maxSalary">
+  </div>
+  <div class="mat-elevation-z5">
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="identification">
+        <th mat-header-cell *matHeaderCellDef> No. Identification</th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="salary">
+        <th mat-header-cell *matHeaderCellDef> Current Salary</th>
+        <td mat-cell *matCellDef="let element"> {{element.currentSalary | currency:'':'symbol':'1.0-0'  }} </td>
+      </ng-container>
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef> State</th>
+        <td mat-cell *matCellDef="let element">
+      <span *ngIf="element.state" style="color: #53CF34" matTooltip="Active employee">
+        <mat-icon>check_circle</mat-icon>
+      </span>
+          <span *ngIf="!element.state" style="color: #e15639" matTooltip="Dismissed employee">
+        <mat-icon>cancel</mat-icon>
+      </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element" style="text-align: right">
+          <a class="icon-link" matTooltip="View employee information" (click)="detailsEmployee(element.id)">
+            <mat-icon>visibility</mat-icon>
+          </a>
+          <a class="icon-link" matTooltip="Edit employee" (click)="edit(element.id)">
+            <mat-icon>edit</mat-icon>
+          </a>
+          <a class="icon-link" matTooltip="Employee salary history" (click)="salaryHistory(element.id)">
+            <mat-icon>list</mat-icon>
+          </a>
+          <a class="icon-link" matTooltip="Liquidate employee" (click)="liquidateEmployee(element.id)" style="color: #e15639">
+            <mat-icon>person_remove</mat-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <div class="paginator">
+      <span class="paginationOf">Items per page: </span>
+      <input class="paginationOf input-border" type="number" [(ngModel)]="recordsPage"
+             (ngModelChange)="onRecordsPageChange()" [min]="5" [max]="15" value="recordsPage">
+      <span class="paginationOf">{{page}} of {{totalPages}}</span>
+      <a (click)="afterPage()">
+        <mat-icon class="navigation">arrow_back_ios</mat-icon>
+      </a>
+      <a (click)="nextPage()">
+        <mat-icon class="navigation">arrow_forward_ios</mat-icon>
+      </a>
+    </div>
+  </div>
+
+
+</div>

@@ -1,0 +1,24 @@
+<mat-toolbar color="primary" class="vertical-toolbar">
+  <span class="title">PayFy</span>
+  <span class="example-spacer"></span>
+  <button mat-button color="secondary" class="icon-button" routerLink="/dashboard/home" routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{exact: true}">
+    <mat-icon>home</mat-icon>
+    <br>
+    <span class="icon-name">Home</span>
+  </button>
+
+  <button mat-button color="secundary" class="icon-button" routerLink="/dashboard/home/employees"
+          routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+    <mat-icon>badge</mat-icon>
+    <br>
+    <span class="text">Employees</span>
+  </button>
+  <button mat-button color="secundary" class="icon-button" routerLink="/dashboard/home/liquidation"
+          routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+    <mat-icon>account_balance_wallet</mat-icon>
+    <br>
+    <span class="text">Liquidation</span>
+  </button>
+  <span class="example-spacer"></span>
+</mat-toolbar>

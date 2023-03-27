@@ -1,0 +1,25 @@
+<div class="body">
+  <div class="form">
+    <h1>Update employee: {{id}}</h1>
+    <form [formGroup]="form" (ngSubmit)="liquidateEmployee()">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Withdrawal Reason</mat-label >
+        <mat-select formControlName="withdrawalReason">
+          <mat-option *ngFor="let w of withdrawals" [value]="w.value">
+            {{w.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Update date</mat-label>
+        <input type="date" matInput autocomplete="off" formControlName="contractEnd">
+      </mat-form-field>
+
+      <button type="submit" class="form-field button" mat-raised-button color="primary" [disabled]="form.invalid">Update
+      </button>
+    </form>
+  </div>
+</div>

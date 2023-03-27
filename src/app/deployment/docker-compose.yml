@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  app-frontend:
+    build:
+      context: .
+      dockerfile: "../../../Dockerfile"
+    ports:
+      - "8080:80"
+    networks:
+      - app-liquidation
+    environment:
+      - apiUrl=http://app-back:8087
+
+
+networks:
+  app-liquidation:
+    driver: bridge

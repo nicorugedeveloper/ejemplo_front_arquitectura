@@ -1,0 +1,11 @@
+<app-welcome-bar [page]="page"></app-welcome-bar>
+<div class="container-button">
+  <button (click)="openSave()" mat-raised-button color="primary">
+    <mat-icon>add_box</mat-icon>
+    <span>Add a new employee </span>
+  </button>
+</div>
+<div class="container">
+  <app-table-employee></app-table-employee>
+</div>
+

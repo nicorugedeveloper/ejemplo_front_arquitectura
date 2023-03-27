@@ -1,0 +1,10 @@
+.mat-icon{
+  margin-right: 15px;
+}
+
+.container-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2%;
+  margin-right: 2%;
+}

@@ -1,0 +1,31 @@
+<div class="body">
+  <div class="form">
+    <h1>Save a new employee</h1>
+    <form [formGroup]="form" (ngSubmit)="saveEmployee()">
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput autocomplete="off" formControlName="name">
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Identification</mat-label>
+        <input matInput autocomplete="off" formControlName="identification">
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Position</mat-label>
+        <input type="text" matInput autocomplete="off" formControlName="position">
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Salary</mat-label>
+        <input min="1160000" max="7000000" placeholder="$1.160.000" type="number" matInput autocomplete="off"
+               formControlName="salary">
+        <span class="validity"></span>
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Contract start</mat-label>
+        <input type="date" matInput autocomplete="off" formControlName="contractStart">
+      </mat-form-field>
+      <button type="submit" class="form-field button" mat-raised-button color="primary" [disabled]="form.invalid">Save
+      </button>
+    </form>
+  </div>
+</div>

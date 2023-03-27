@@ -1,0 +1,16 @@
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.vertical-toolbar {
+  width: 20vh;
+  /* Resto de estilos */
+}
+
+.content {
+  flex: 1;
+  /* Resto de estilos */
+}
